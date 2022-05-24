@@ -1,4 +1,4 @@
-// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+﻿// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
 void FillArray(int[,] array)
 {
@@ -23,8 +23,8 @@ void Print(int[,] array)
     }
 }
 
-int[,] matrix1 = new int[3, 3];
-int[,] matrix2 = new int[matrix1.GetLength(0), matrix1.GetLength(1)];
+int[,] matrix1 = new int[3, 2];
+int[,] matrix2 = new int[2, 3];
 int[,] matrix3 = new int[Math.Max(matrix1.GetLength(0), matrix2.GetLength(0)),
                          Math.Max(matrix1.GetLength(1), matrix2.GetLength(1))];
 FillArray(matrix1);
@@ -34,15 +34,21 @@ Console.WriteLine();
 Print(matrix2);
 Console.WriteLine();
 
-for (int i = 0; i < matrix3.GetLength(0); i++)
+if (matrix1.GetLength(1) != matrix2.GetLength(0))
 {
-    for (int j = 0; j < matrix3.GetLength(1); j++)
+    Console.WriteLine("Такие матрицы нельзя перемножить, так как количество столбцов первой матрицы не равно количеству строк второй матрицы");
+}
+else
+{
+    for (int i = 0; i < matrix3.GetLength(0); i++)
     {
-        for (int k = 0; k < matrix3.GetLength(0); k++)
+        for (int j = 0; j < matrix3.GetLength(1); j++)
         {
-            matrix3[i,j] += matrix1[i, k] * matrix2[k, j];
+            for (int k = 0; k < matrix1.GetLength(1); k++)
+            {
+                matrix3[i,j] += matrix1[i, k] * matrix2[k, j];
+            }
         }
     }
+    Print(matrix3);
 }
-
-Print(matrix3);
