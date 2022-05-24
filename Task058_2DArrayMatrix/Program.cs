@@ -1,4 +1,4 @@
-﻿// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
 void FillArray(int[,] array)
 {
@@ -34,20 +34,15 @@ Console.WriteLine();
 Print(matrix2);
 Console.WriteLine();
 
-for (int l = 0; l < matrix3.GetLength(0); l++)
+for (int i = 0; i < matrix3.GetLength(0); i++)
 {
-    for (int m = 0; m < matrix3.GetLength(1); m++)
+    for (int j = 0; j < matrix3.GetLength(1); j++)
     {
-        for (int i = 0; i < matrix3.GetLength(0); i++)
+        for (int k = 0; k < matrix3.GetLength(0); k++)
         {
-            for (int j = 0; j < matrix3.GetLength(1); j++)
-            {
-                matrix3[i+l, j+m] += matrix1[i+l, j+m] * matrix2[j+l, i+l];
-            }
+            matrix3[i,j] += matrix1[i, k] * matrix2[k, j];
         }
     }
 }
 
 Print(matrix3);
-
-// НЕ РЕШЕНО
